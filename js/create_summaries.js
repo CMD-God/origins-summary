@@ -89,7 +89,9 @@ function createHtmlForOrigin(origin_id = "") {
     var origin_name = origin_obj.name || origins_language_data[`origin.origins.${id}.name`];
     var origin_desc = origin_obj.description || origins_language_data[`origin.origins.${id}.description`];
     
-    var html = `<div class="origin"><h1>${origin_name}</h1><p>${origin_desc}</p><div class="small_sep"></div>${powerListHtml(origin_obj.powers)}</div>`;
+    var icon = origin_obj.icon ? `<img src="https://mc.nerothe.com/img/1.19.2/${origin_obj.icon.item.split(":")[1]}.png">` : "";
+
+    var html = `<div class="origin"><div class="origin_name_bar">${icon}<h1>${origin_name}</h1></div><p>${origin_desc}</p><div class="small_sep"></div>${powerListHtml(origin_obj.powers)}</div>`;
     return html;
 }
 

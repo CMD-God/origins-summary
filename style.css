@@ -5,18 +5,28 @@
 
 .origin {
     background-color: #8b8b8b;
-    border-radius: 2em;
-    border: 0.5em solid #555555;
+    border-radius: 1em;
+    border: 0.2em solid #555555;
     padding: 1em;
-    width: 300px;
+    width: 350px;
+    margin: 10px;
 }
 
 .origin_list {
-    display:flex;
+    display: flex;
     padding: 50px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-between;
 }
 
 .origin_layer_title {
     text-align: center;
     font-size: 4em;
+}
+
+h1, h2 {
+    margin: 0;
+    padding: 0;
 }
