@@ -1,4 +1,15 @@
 
+@font-face {
+    font-family: "Minecraft";
+    src: url("./fonts/MinecraftRegular-Bmg3.otf");
+}
+
+body {
+    font-family: Minecraft, Arial, Helvetica, sans-serif;
+    background-image: url(./img/dirt_bg.webp);
+    background-size: cover;
+}
+
 .small_sep {
     height: 0.5em;
 }
