@@ -7,7 +7,8 @@
 body {
     font-family: Minecraft, Arial, Helvetica, sans-serif;
     background-image: url(./img/dirt_bg.webp);
-    background-size: cover;
+    background-size: contain;
+    background-repeat: repeat-y;
 }
 
 .small_sep {
