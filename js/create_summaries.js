@@ -53,12 +53,17 @@ function fetchNameAndDescForPower(power_id = "") {
     var id = bits[1];
     if (!(namespace === "ucr_stitch")) {
         // We assume the power is from Origins.
-        name = origins_language_data[`power.origins.${id}.name`];
-        desc = origins_language_data[`power.origins.${id}.description`];
+        name = origins_language_data[`power.origins.${id}.name`] || "";
+        desc = origins_language_data[`power.origins.${id}.description`] || "";
     } else {
         var power = followSlashObjects(my_powers, id);
-        name = power.name;
-        desc = power.description;
+        if (power.hidden) {
+            name = "";
+            desc = "";
+        } else {
+            name = power.name;
+            desc = power.description;
+        }
     }
 
     return {name: name, desc: desc};
@@ -68,7 +73,9 @@ function powerListHtml(powers = []) {
     var html = "";
     powers.forEach((power_id) => {
         var name_and_desc = fetchNameAndDescForPower(power_id);
-        html += `<h2>${name_and_desc.name}</h2><p>${name_and_desc.desc}</p>`;
+        if (name_and_desc.name !== "" && name_and_desc.desc !== "") {
+            html += `<h2>${name_and_desc.name}</h2><p>${name_and_desc.desc}</p>`;
+        }
     })
     return html;
 }
@@ -82,7 +89,7 @@ function createHtmlForOrigin(origin_id = "") {
     var origin_name = origin_obj.name || origins_language_data[`origin.origins.${id}.name`];
     var origin_desc = origin_obj.description || origins_language_data[`origin.origins.${id}.description`];
     
-    var html = `<div class="origin"><h1>${origin_name}</h1><p>${origin_desc}</p><br>${powerListHtml(origin_obj.powers)}</div>`;
+    var html = `<div class="origin"><h1>${origin_name}</h1><p>${origin_desc}</p><div class="small_sep"></div>${powerListHtml(origin_obj.powers)}</div>`;
     return html;
 }
 

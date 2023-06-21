@@ -1,0 +1,22 @@
+
+.small_sep {
+    height: 0.5em;
+}
+
+.origin {
+    background-color: #8b8b8b;
+    border-radius: 2em;
+    border: 0.5em solid #555555;
+    padding: 1em;
+    width: 300px;
+}
+
+.origin_list {
+    display:flex;
+    padding: 50px;
+}
+
+.origin_layer_title {
+    text-align: center;
+    font-size: 4em;
+}
