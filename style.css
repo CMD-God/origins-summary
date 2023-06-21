@@ -45,6 +45,7 @@ h1, h2 {
 .origin_name_bar {
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
     align-items: center;
     background-color: #B48712;
     border-radius: 0.5em;
@@ -52,4 +53,37 @@ h1, h2 {
 
 .origin_name_bar h1 {
     margin-left: 0.1em;
+}
+
+.full_width {
+    width: 100%;
+}
+
+.origin_orb_holder {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.orb {
+    height: 0.8em;
+    width: 0.8em;
+    border-radius: 50%;
+    border: #000000 solid 0.2em;
+}
+
+.impact0 {
+    background-color: #8b8b8b;
+}
+
+.impact1 {
+    background-color: green;
+}
+
+.impact2 {
+    background-color: rgb(255, 213, 0);
+}
+
+.impact3 {
+    background-color: rgb(255, 0, 0);
 }

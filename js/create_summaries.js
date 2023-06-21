@@ -80,6 +80,14 @@ function powerListHtml(powers = []) {
     return html;
 }
 
+function createImpactHTML(impact) {
+    var orb_html = "";
+    for (var i=0; i < 3; i++) {
+        orb_html += `<div class="orb impact${impact}"></div>`
+    }
+    return `<div class="origin_orb_holder">${orb_html}</div>`;
+}
+
 function createHtmlForOrigin(origin_id = "") {
     var bits = origin_id.split(":");
     var namespace = bits[0];
@@ -88,11 +96,20 @@ function createHtmlForOrigin(origin_id = "") {
     var origin_obj = followSlashObjects(my_origins, id);
     var origin_name = origin_obj.name || origins_language_data[`origin.origins.${id}.name`];
     var origin_desc = origin_obj.description || origins_language_data[`origin.origins.${id}.description`];
+    var origin_impact = origin_obj.impact || 0;
     
     var icon = origin_obj.icon ? `<img src="https://mc.nerothe.com/img/1.19.2/${origin_obj.icon.item.split(":")[1]}.png">` : "";
 
-    var html = `<div class="origin"><div class="origin_name_bar">${icon}<h1>${origin_name}</h1></div><p>${origin_desc}</p><div class="small_sep"></div>${powerListHtml(origin_obj.powers)}</div>`;
+    var html = `<div class="origin"><div class="origin_name_bar">${icon}<h1>${origin_name}</h1><div class="full_width">${createImpactHTML(origin_impact)}</div><p>${origin_desc}</p><div class="small_sep"></div>${powerListHtml(origin_obj.powers)}</div>`;
     return html;
+}
+
+function orderOriginsBasedOnImpact(list) {
+    list.sort((a, b) => {
+        var ao = followSlashObjects(my_origins, a.split(":")[1]);
+        var bo = followSlashObjects(my_origins, a.split(":")[1]);
+        return ao.impact - bo.impact;
+    })
 }
 
 $.getJSON("./origins_en_us.json", {}, (lan_data) => {
@@ -103,6 +120,7 @@ $.getJSON("./origins_en_us.json", {}, (lan_data) => {
         var layers = data["origin_layers/"];
         var origin_lists = createOriginLists(layers);
         origin_lists.forEach((list_obj) => {
+            orderOriginsBasedOnImpact(list_obj.origins);
             var title = $(`<h1 class="origin_layer_title">${list_obj.display_name}</h1>`);
             var origins = $(`<div class="origin_list">${list_obj.origins.map((o) => {return createHtmlForOrigin(o)}).join("")}</div>`);
             $("body").append(title).append(origins);
