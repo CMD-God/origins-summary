@@ -16,8 +16,8 @@ function createOriginLists(layers) {
     for (var i=0; i < layer_list.length; i++) {
         var layer = layer_list[i];
         var list = [];
-        for (var j=0; j < layer.origins.length; i++) {
-            var origin_obj = layer.origins[i];
+        for (var j=0; j < layer.origins.length; j++) {
+            var origin_obj = layer.origins[j];
             if (typeof(origin_obj) == "string") {
                 list.push(origin_list_obj);
             } else {
