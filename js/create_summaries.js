@@ -64,6 +64,15 @@ function fetchNameAndDescForPower(power_id = "") {
     return {name: name, desc: desc};
 }
 
+function powerListHtml(powers = []) {
+    var html = "";
+    powers.forEach((power_id) => {
+        var name_and_desc = fetchNameAndDescForPower(power_id);
+        html += `<h2>${name_and_desc.name}</h2><p>${name_and_desc.desc}</p>`;
+    })
+    return html;
+}
+
 function createHtmlForOrigin(origin_id = "") {
     var bits = origin_id.split(":");
     var namespace = bits[0];
@@ -73,7 +82,7 @@ function createHtmlForOrigin(origin_id = "") {
     var origin_name = origin_obj.name || origins_language_data[`origin.origins.${id}.name`];
     var origin_desc = origin_obj.description || origins_language_data[`origin.origins.${id}.description`];
     
-    var html = `<div><h1>${origin_name}</h1><p>${origin_desc}</p></div>`;
+    var html = `<div class="origin"><h1>${origin_name}</h1><p>${origin_desc}</p><br>${powerListHtml(origin_obj.powers)}</div>`;
     return html;
 }
 
@@ -84,6 +93,10 @@ $.getJSON("./origins_en_us.json", {}, (lan_data) => {
         my_origins = data["origins/"];
         var layers = data["origin_layers/"];
         var origin_lists = createOriginLists(layers);
-        console.log(origin_lists);
+        origin_lists.forEach((list_obj) => {
+            var title = $(`<h1 class="origin_layer_title">${list_obj.display_name}</h1>`);
+            var origins = $(`<div class="origin_list">${list_obj.origins.map((o) => {return createHtmlForOrigin(o)}).join("")}</div>`);
+            $("body").append(title).append(origins);
+        })
     });
 });
