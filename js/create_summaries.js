@@ -13,7 +13,7 @@ function createOriginLists(layers) {
     layer_list.sort((a, b) => {return a.order - b.order;});
     console.log(layer_list);
     var origin_lists = [];
-    for (var i=0; i < layer_list.length(); i++) {
+    for (var i=0; i < layer_list.length; i++) {
         var layer = layer_list[i];
         var list = [];
         for (var j=0; j < layer.origins.length; i++) {
