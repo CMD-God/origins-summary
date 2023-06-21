@@ -107,7 +107,7 @@ function createHtmlForOrigin(origin_id = "") {
 function orderOriginsBasedOnImpact(list) {
     list.sort((a, b) => {
         var ao = followSlashObjects(my_origins, a.split(":")[1]);
-        var bo = followSlashObjects(my_origins, a.split(":")[1]);
+        var bo = followSlashObjects(my_origins, b.split(":")[1]);
         return ao.impact - bo.impact;
     })
 }
