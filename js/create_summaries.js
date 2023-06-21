@@ -18,10 +18,10 @@ function createOriginLists(layers) {
         var list = [];
         for (var j=0; j < layer.origins.length; i++) {
             var origin_obj = layer.origins[i];
-            if (typeof origin_obj === "string") {
+            if (typeof(origin_obj) == "string") {
                 list.push(origin_list_obj);
             } else {
-                list.concat(...(origin_list_obj.origins));
+                list = list.concat(origin_obj.origins);
             }
         }
         var origin_list_obj = {
