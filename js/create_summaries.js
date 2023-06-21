@@ -3,6 +3,13 @@ var origins_language_data;
 var my_powers;
 var my_origins;
 
+const IMPACT_LEVELS = [
+    "None",
+    "Low",
+    "Medium",
+    "High"
+];
+
 const PLURAL_LAYER_NAMES = {
     "origins:origin" : "Origins",
     "mage_specializations": "Mage Specializations"
@@ -82,10 +89,10 @@ function powerListHtml(powers = []) {
 
 function createImpactHTML(impact) {
     var orb_html = "";
-    for (var i=0; i < 3; i++) {
+    for (var i=0; i < IMPACT_LEVELS-1; i++) {
         orb_html += `<div class="orb ${i < impact ? `impact${impact}` : "impact0"}"></div>`
     }
-    return `<div class="origin_orb_holder">${orb_html}</div>`;
+    return `<div class="origin_orb_holder" title="${IMPACT_LEVELS[impact]}">${orb_html}</div>`;
 }
 
 function createHtmlForOrigin(origin_id = "") {
