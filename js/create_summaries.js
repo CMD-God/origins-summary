@@ -17,7 +17,7 @@ const PLURAL_LAYER_NAMES = {
 
 const LAYER_COLORS = {
     "origins:origin" : "#999999",
-    "mage_specializations": "#CC8899"
+    "mage_specializations": "#880ED4"
 }
 
 function createOriginLists(layers) {
