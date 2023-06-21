@@ -30,3 +30,15 @@ h1, h2 {
     margin: 0;
     padding: 0;
 }
+
+.origin_name_bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #B48712;
+    border-radius: 0.5em;
+}
+
+.origin_name_bar h1 {
+    margin-left: 0.1em;
+}
