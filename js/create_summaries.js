@@ -100,7 +100,7 @@ function createHtmlForOrigin(origin_id = "") {
     
     var icon = origin_obj.icon ? `<img src="https://mc.nerothe.com/img/1.19.2/${origin_obj.icon.item.split(":")[1]}.png">` : "";
 
-    var html = `<div class="origin"><div class="origin_name_bar">${icon}<h1>${origin_name}</h1><div class="full_width">${createImpactHTML(origin_impact)}</div><p>${origin_desc}</p><div class="small_sep"></div>${powerListHtml(origin_obj.powers)}</div>`;
+    var html = `<div class="origin"><div class="origin_name_bar">${icon}<h1>${origin_name}</h1><div class="full_width"></div>${createImpactHTML(origin_impact)}</div><p>${origin_desc}</p><div class="small_sep"></div>${powerListHtml(origin_obj.powers)}</div>`;
     return html;
 }
 
