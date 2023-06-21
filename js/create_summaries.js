@@ -95,7 +95,7 @@ function powerListHtml(powers = []) {
 
 function createImpactHTML(impact) {
     var orb_html = "";
-    for (var i=0; i < IMPACT_LEVELS-1; i++) {
+    for (var i=0; i < IMPACT_LEVELS.length-1; i++) {
         orb_html += `<div class="orb ${i < impact ? `impact${impact}` : "impact0"}"></div>`
     }
     return `<div class="origin_orb_holder" title="${IMPACT_LEVELS[impact]}">${orb_html}</div>`;
