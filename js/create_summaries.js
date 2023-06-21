@@ -15,6 +15,11 @@ const PLURAL_LAYER_NAMES = {
     "mage_specializations": "Mage Specializations"
 };
 
+const LAYER_COLORS = {
+    "origins:origin" : "#999999",
+    "mage_specializations": "#CC8899"
+}
+
 function createOriginLists(layers) {
     var layer_list = [];
     for (key in layers) {
@@ -37,6 +42,7 @@ function createOriginLists(layers) {
         }
         var origin_list_obj = {
             "display_name" : PLURAL_LAYER_NAMES[layer.key] || layer.key,
+            "color": LAYER_COLORS[layer.key] || "#FFFFFF",
             "origins" : list
         };
         origin_lists.push(origin_list_obj);
@@ -128,7 +134,7 @@ $.getJSON("./origins_en_us.json", {}, (lan_data) => {
         var origin_lists = createOriginLists(layers);
         origin_lists.forEach((list_obj) => {
             orderOriginsBasedOnImpact(list_obj.origins);
-            var title = $(`<h1 class="origin_layer_title">${list_obj.display_name}</h1>`);
+            var title = $(`<h1 class="origin_layer_title" style="color: ${list_obj.color}">${list_obj.display_name}</h1>`);
             var origins = $(`<div class="origin_list">${list_obj.origins.map((o) => {return createHtmlForOrigin(o)}).join("")}</div>`);
             $("body").append(title).append(origins);
         })
