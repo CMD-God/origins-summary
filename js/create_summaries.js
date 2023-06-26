@@ -3,6 +3,8 @@ var origins_language_data;
 var my_powers;
 var my_origins;
 
+const ORIGIN_DATA_VERSION = 2;
+
 const IMPACT_LEVELS = [
     "None",
     "Low",
@@ -127,7 +129,7 @@ function orderOriginsBasedOnImpact(list) {
 
 $.getJSON("./origins_en_us.json", {}, (lan_data) => {
     origins_language_data = lan_data;
-    $.getJSON("./UCR_Origins_Backup.json", {}, (data) => {
+    $.getJSON(`./UCR_Origins_Backup_v${ORIGIN_DATA_VERSION}.json`, {}, (data) => {
         my_powers = data["powers/"];
         my_origins = data["origins/"];
         var layers = data["origin_layers/"];
