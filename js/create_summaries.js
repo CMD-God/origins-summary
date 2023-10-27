@@ -3,7 +3,7 @@ var origins_language_data;
 var my_powers;
 var my_origins;
 
-const ORIGIN_DATA_VERSION = 7;
+const ORIGIN_DATA_VERSION = 8;
 
 const IMPACT_LEVELS = [
     "None",
