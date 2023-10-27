@@ -113,7 +113,12 @@ function createHtmlForOrigin(origin_id = "") {
     var origin_desc = origin_obj.description || origins_language_data[`origin.origins.${id}.description`];
     var origin_impact = origin_obj.impact || 0;
     
-    var icon = origin_obj.icon ? `<img src="https://mc.nerothe.com/img/1.19.2/${origin_obj.icon.item.split(":")[1]}.png">` : "";
+    var icon = "";
+    if (origin_obj.icon) {
+        var iconId = origin_obj.icon.item.split(":");
+        var icon = (iconId[0] === "minecraft") ? `<img src="https://mc.nerothe.com/img/1.19.2/${iconId[1]}.png">` : "";
+    }
+    
 
     var html = `<div class="origin"><div class="origin_name_bar">${icon}<h1>${origin_name}</h1><div class="full_width"></div>${createImpactHTML(origin_impact)}</div><p>${origin_desc}</p><div class="small_sep"></div>${powerListHtml(origin_obj.powers)}</div>`;
     return html;
