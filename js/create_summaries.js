@@ -109,6 +109,9 @@ function createHtmlForOrigin(origin_id = "") {
     var id = bits[1];
     
     var origin_obj = followSlashObjects(my_origins, id);
+	if (!origin_obj) {
+		return;
+	}
     var origin_name = origin_obj.name || origins_language_data[`origin.origins.${id}.name`];
     var origin_desc = origin_obj.description || origins_language_data[`origin.origins.${id}.description`];
     var origin_impact = origin_obj.impact || 0;
