@@ -128,6 +128,14 @@ function orderOriginsBasedOnImpact(list) {
     list.sort((a, b) => {
         var ao = followSlashObjects(my_origins, a.split(":")[1]);
         var bo = followSlashObjects(my_origins, b.split(":")[1]);
+		if (!ao) {
+			console.warn(a, "doesn't exist!");
+			return false;
+		}
+		if (!bo) {
+			console.warn(b, "doesn't exist!");
+			return false;
+		}
         return ao.impact - bo.impact;
     })
 }
